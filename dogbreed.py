@@ -140,7 +140,7 @@ classes = ['Chihuahua',
 
 model = tf.keras.models.load_model(
 #      ('./model/model.h5'),
-       ('model2.h5'),
+       ('model3.h5'),
        custom_objects={'KerasLayer':hub.KerasLayer}
 )
 
