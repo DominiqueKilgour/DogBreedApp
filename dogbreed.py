@@ -139,8 +139,8 @@ classes = ['Chihuahua',
  'African_hunting_dog']
 
 model = tf.keras.models.load_model(
- #      ('./model/model.h5'),
-       ('model.h5'),
+#      ('./model/model.h5'),
+       ('model2.h5'),
        custom_objects={'KerasLayer':hub.KerasLayer}
 )
 
