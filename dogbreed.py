@@ -1,20 +1,10 @@
 import streamlit as st
-import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import os 
 import tensorflow as tf
 import tensorflow_hub as hub
-from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.layers import Dense, Input, InputLayer
-
 #import dogbreedclasses
-
 import warnings
 warnings.filterwarnings("ignore") 
-
-plt.rcParams['font.size'] = 10
-
 from keras.models import load_model
 
 classes = ['Chihuahua',
@@ -139,7 +129,6 @@ classes = ['Chihuahua',
  'African_hunting_dog']
 
 model = tf.keras.models.load_model(
-#      ('./model/model.h5'),
        ('model3.h5'),
        custom_objects={'KerasLayer':hub.KerasLayer}
 )
@@ -160,4 +149,6 @@ if uploaded_file is not None:
 	prediction = model.predict(transformedImage)
 	pred = np.argmax(prediction, axis=-1)
 
-	st.write(f"The prediction of the dog breed is: {classes[pred[0]]}")
+	st.write(f"The prediction of the dog breed is: {classes[pred[0]]} with {prediction[0][pred[0]]*100:.2f}% probability")
+	st.write(f"Using imagenet/mobilenet_v3_large_100_224/classification model after transfer training with 120 dog breeds")
+	st.write("Stanford Dogs Dataset from [link](http://vision.stanford.edu/aditya86/ImageNetDogs)")
